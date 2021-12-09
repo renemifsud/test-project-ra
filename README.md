@@ -13,3 +13,4 @@ In the api directory, do the following.
 In the sys-stats directory, do the following.
 - npm install
 - npm start
+- Visit http://127.0.0.1:3000
