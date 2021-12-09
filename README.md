@@ -5,12 +5,12 @@ Python - Flask Web App, which reads the current RAM and CPU usage and a React fr
 ### How to run ?
 The app is setup in a pretty standard way, just like most Python-React Apps.
 #### Python Backend
-In the api directory, do the following.
+In the api directory, do the following. (python 3)
 - pip install -r requirements.txt
 - python app.py
 - Visit http://127.0.0.1:5000/stat
 #### React Frontend
-In the sys-stats directory, do the following.
+In the sys-stats directory, do the following. (node 16)
 - npm install
 - npm start
 - Visit http://127.0.0.1:3000
