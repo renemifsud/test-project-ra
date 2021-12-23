@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  api:
+    build: api
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=app.py
+
+  node:
+    build: sys-stats
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_BACKEND_HOST=localhost
+      - REACT_APP_BACKEND_PORT=5000
+    depends_on:
+      - api
+
+  haproxy:
+    build: proxy
+    depends_on:
+      - api
+      - node
+    ports:
+      - '5000:80'
+
+volumes:
+  node-modules:

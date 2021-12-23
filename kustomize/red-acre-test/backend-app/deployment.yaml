@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: red-acre-test-be
+  template:
+    metadata:
+      labels:
+        app: red-acre-test-be
+    spec:
+      containers:
+      - name: flask
+        image: public.ecr.aws/j4k5r3p0/flask_api:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+          requests:
+            memory : "60Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 5000
+        readinessProbe:
+          tcpSocket:
+            port: 5000
+          initialDelaySeconds: 3
+          periodSeconds: 5
+        livenessProbe:
+          tcpSocket:
+            port: 5000
+          initialDelaySeconds: 15
+          periodSeconds: 20
+            

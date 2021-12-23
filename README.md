@@ -14,3 +14,9 @@ In the sys-stats directory, do the following. (node 16)
 - npm install
 - npm start
 - Visit http://127.0.0.1:3000
+
+
+#### Run using docker compose
+To build the project using docker compose (docker-compose) run the below command and go to localhost:5000
+
+ - docker compose up --build

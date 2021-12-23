@@ -11,6 +11,9 @@ def stats():
     ram = psutil.virtual_memory().percent
 
     return jsonify({"ram": ram, "cpu": cpu})
+@app.route('/health')
+def health():
+    return jsonify({"status": "ok"})
 
 
 if __name__ == "__main__":

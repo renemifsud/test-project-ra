@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: red-acre-test-fe
+  template:
+    metadata:
+      labels:
+        app: red-acre-test-fe
+    spec:
+      containers:
+      - name: node
+        image: public.ecr.aws/j4k5r3p0/react_node:latest
+        env:
+          - name: REACT_APP_BACKEND_HOST # This should be the same as set in ingress /spec/rules/0/hosts
+            value: ""
+          - name: REACT_APP_BACKEND_PORT # This should be set if a port is defined in the ingress manifest /spec/rules/0/hosts 
+            value: "80"
+        resources:
+          limits:
+            memory: "500Mi"
+            cpu: "500m"
+          requests:
+            memory : "128Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 3000
+
+            
